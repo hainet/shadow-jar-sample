@@ -1,0 +1,38 @@
+group 'com.hainet'
+version '1.0.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'com.hainet.Main'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+shadowJar {
+    baseName = rootProject.name
+    version = version
+    classifier = 'classifier'
+}
+
+runShadow {
+    args 'Shadow Jar sample.'
+}
